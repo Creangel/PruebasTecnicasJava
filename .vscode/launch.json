@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PruebaTecnicaApplication<pruebaTecnica>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.creangel.pruebaTecnica.PruebaTecnicaApplication",
+            "projectName": "pruebaTecnica",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
