@@ -75,38 +75,6 @@ public class AlumnoController {
         return ResponseEntity.ok(respuesta);
     }
     
-    // READ - Obtener alumno por email
-    @GetMapping("/email/{email}")
-    public ResponseEntity<AlumnoDTO> obtenerAlumnoPorEmail(@PathVariable String email) {
-        Optional<Alumno> alumno = alumnoService.obtenerAlumnoPorEmail(email);
-        if (alumno.isPresent()) {
-            AlumnoDTO respuesta = convertirModeloaDTO(alumno.get());
-            return ResponseEntity.ok(respuesta);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-    
-    // READ - Buscar alumnos por nombre
-    @GetMapping("/buscar/nombre")
-    public ResponseEntity<List<AlumnoDTO>> buscarAlumnosPorNombre(@RequestParam String nombre) {
-        List<Alumno> alumnos = alumnoService.buscarAlumnosPorNombre(nombre);
-        List<AlumnoDTO> respuesta = alumnos.stream()
-                .map(this::convertirModeloaDTO)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(respuesta);
-    }
-    
-    // READ - Buscar alumnos por apellido
-    @GetMapping("/buscar/apellido")
-    public ResponseEntity<List<AlumnoDTO>> buscarAlumnosPorApellido(@RequestParam String apellido) {
-        List<Alumno> alumnos = alumnoService.buscarAlumnosPorApellido(apellido);
-        List<AlumnoDTO> respuesta = alumnos.stream()
-                .map(this::convertirModeloaDTO)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(respuesta);
-    }
-    
     // UPDATE - Actualizar alumno existente
     @PutMapping("/{id}")
     public ResponseEntity<AlumnoDTO> actualizarAlumno(@PathVariable Integer id, @RequestBody AlumnoDTO alumnoDTO) {
@@ -129,40 +97,6 @@ public class AlumnoController {
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
-    }
-    
-    // DELETE - Eliminar alumno por email
-    @DeleteMapping("/email/{email}")
-    public ResponseEntity<Void> eliminarAlumnoPorEmail(@PathVariable String email) {
-        try {
-            alumnoService.eliminarAlumnoPorEmail(email);
-            return ResponseEntity.noContent().build();
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-    
-    // Métodos de utilidad
-    
-    // Contar total de alumnos
-    @GetMapping("/contar")
-    public ResponseEntity<Long> contarTotalAlumnos() {
-        long total = alumnoService.contarTotalAlumnos();
-        return ResponseEntity.ok(total);
-    }
-    
-    // Verificar si existe alumno por ID
-    @GetMapping("/{id}/existe")
-    public ResponseEntity<Boolean> existeAlumnoPorId(@PathVariable Integer id) {
-        boolean existe = alumnoService.existeAlumnoPorId(id);
-        return ResponseEntity.ok(existe);
-    }
-    
-    // Verificar si existe alumno por email
-    @GetMapping("/email/{email}/existe")
-    public ResponseEntity<Boolean> existeAlumnoPorEmail(@PathVariable String email) {
-        boolean existe = alumnoService.existeAlumnoPorEmail(email);
-        return ResponseEntity.ok(existe);
     }
     
     // Métodos de conversión

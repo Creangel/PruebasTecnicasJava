@@ -44,24 +44,6 @@ public class AlumnoService {
         return alumnoRepository.findAllByOrderByApellidoAscNombreAsc();
     }
     
-    // READ - Obtener alumno por email
-    @Transactional(readOnly = true)
-    public Optional<Alumno> obtenerAlumnoPorEmail(String email) {
-        return alumnoRepository.findByEmail(email);
-    }
-    
-    // READ - Buscar alumnos por nombre
-    @Transactional(readOnly = true)
-    public List<Alumno> buscarAlumnosPorNombre(String nombre) {
-        return alumnoRepository.findByNombreContainingIgnoreCase(nombre);
-    }
-    
-    // READ - Buscar alumnos por apellido
-    @Transactional(readOnly = true)
-    public List<Alumno> buscarAlumnosPorApellido(String apellido) {
-        return alumnoRepository.findByApellidoContainingIgnoreCase(apellido);
-    }
-    
     // UPDATE - Actualizar alumno existente
     public Alumno actualizarAlumno(Integer id, Alumno alumnoActualizado) {
         Optional<Alumno> alumnoExistente = alumnoRepository.findById(id);
@@ -99,35 +81,5 @@ public class AlumnoService {
             throw new RuntimeException("No se encontró el alumno con ID: " + id);
         }
         alumnoRepository.deleteById(id);
-    }
-    
-    // DELETE - Eliminar alumno por email
-    public void eliminarAlumnoPorEmail(String email) {
-        Optional<Alumno> alumno = alumnoRepository.findByEmail(email);
-        if (alumno.isPresent()) {
-            alumnoRepository.delete(alumno.get());
-        } else {
-            throw new RuntimeException("No se encontró el alumno con email: " + email);
-        }
-    }
-    
-    // Métodos de utilidad
-    
-    // Contar total de alumnos
-    @Transactional(readOnly = true)
-    public long contarTotalAlumnos() {
-        return alumnoRepository.count();
-    }
-    
-    // Verificar si existe alumno por ID
-    @Transactional(readOnly = true)
-    public boolean existeAlumnoPorId(Integer id) {
-        return alumnoRepository.existsById(id);
-    }
-    
-    // Verificar si existe alumno por email
-    @Transactional(readOnly = true)
-    public boolean existeAlumnoPorEmail(String email) {
-        return alumnoRepository.existsByEmail(email);
     }
 }

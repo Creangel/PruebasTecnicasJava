@@ -75,38 +75,6 @@ public class MateriaController {
         return ResponseEntity.ok(respuesta);
     }
     
-    // READ - Obtener materia por código
-    @GetMapping("/codigo/{codigo}")
-    public ResponseEntity<MateriaDTO> obtenerMateriaPorCodigo(@PathVariable String codigo) {
-        Optional<Materia> materia = materiaService.obtenerMateriaPorCodigo(codigo);
-        if (materia.isPresent()) {
-            MateriaDTO respuesta = convertirModeloaDTO(materia.get());
-            return ResponseEntity.ok(respuesta);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-    
-    // READ - Buscar materias por nombre
-    @GetMapping("/buscar/nombre")
-    public ResponseEntity<List<MateriaDTO>> buscarMateriasPorNombre(@RequestParam String nombre) {
-        List<Materia> materias = materiaService.buscarMateriasPorNombre(nombre);
-        List<MateriaDTO> respuesta = materias.stream()
-                .map(this::convertirModeloaDTO)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(respuesta);
-    }
-    
-    // READ - Buscar materias por código
-    @GetMapping("/buscar/codigo")
-    public ResponseEntity<List<MateriaDTO>> buscarMateriasPorCodigo(@RequestParam String codigo) {
-        List<Materia> materias = materiaService.buscarMateriasPorCodigo(codigo);
-        List<MateriaDTO> respuesta = materias.stream()
-                .map(this::convertirModeloaDTO)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(respuesta);
-    }
-    
     // UPDATE - Actualizar materia existente
     @PutMapping("/{id}")
     public ResponseEntity<MateriaDTO> actualizarMateria(@PathVariable Integer id, @RequestBody MateriaDTO materiaDTO) {
@@ -129,48 +97,7 @@ public class MateriaController {
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
-    }
-    
-    // DELETE - Eliminar materia por código
-    @DeleteMapping("/codigo/{codigo}")
-    public ResponseEntity<Void> eliminarMateriaPorCodigo(@PathVariable String codigo) {
-        try {
-            materiaService.eliminarMateriaPorCodigo(codigo);
-            return ResponseEntity.noContent().build();
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-    
-    // Métodos de utilidad
-    
-    // Contar total de materias
-    @GetMapping("/contar")
-    public ResponseEntity<Long> contarTotalMaterias() {
-        long total = materiaService.contarTotalMaterias();
-        return ResponseEntity.ok(total);
-    }
-    
-    // Verificar si existe materia por ID
-    @GetMapping("/{id}/existe")
-    public ResponseEntity<Boolean> existeMateriaPorId(@PathVariable Integer id) {
-        boolean existe = materiaService.existeMateriaPorId(id);
-        return ResponseEntity.ok(existe);
-    }
-    
-    // Verificar si existe materia por código
-    @GetMapping("/codigo/{codigo}/existe")
-    public ResponseEntity<Boolean> existeMateriaPorCodigo(@PathVariable String codigo) {
-        boolean existe = materiaService.existeMateriaPorCodigo(codigo);
-        return ResponseEntity.ok(existe);
-    }
-    
-    // Contar materias por créditos
-    @GetMapping("/contar/creditos/{creditos}")
-    public ResponseEntity<Long> contarMateriasPorCreditos(@PathVariable Integer creditos) {
-        long total = materiaService.contarMateriasPorCreditos(creditos);
-        return ResponseEntity.ok(total);
-    }
+    } 
     
     // Métodos de conversión
     
