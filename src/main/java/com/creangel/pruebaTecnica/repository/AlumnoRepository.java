@@ -15,6 +15,9 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Integer> {
     
     // Buscar por email
     Optional<Alumno> findByEmail(String email);
+
+    //Buscar por id
+    Optional<Alumno> findById(Integer id);
     
     // Buscar por nombre y apellido
     List<Alumno> findByNombreAndApellido(String nombre, String apellido);
@@ -40,7 +43,13 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Integer> {
     
     // Verificar si existe por email
     boolean existsByEmail(String email);
+
+    //Verificar si existe por id
+    boolean existsById(Integer id);
     
     // Buscar alumnos ordenados por apellido y nombre
     List<Alumno> findAllByOrderByApellidoAscNombreAsc();
+
+    //Eliminar por id 
+    void deleteById(Integer id);
 }
