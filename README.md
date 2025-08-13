@@ -16,7 +16,7 @@ Aplicación de demostración desarrollada con Spring Boot para pruebas técnicas
 Configura las siguientes variables de entorno en tu sistema:
 
 ```bash
-export DB_URI="jdbc:mysql://localhost:3306/prueba_tecnica?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
+export DB_URI="jdbc:mysql://192.168.230.98:33060/test1?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
 export DB_USER="tu_usuario"
 export DB_PASSWORD="tu_password"
 export DB_DRIVER="com.mysql.cj.jdbc.Driver"
@@ -143,3 +143,4 @@ La aplicación incluye datos de ejemplo:
 - Los datos de ejemplo se insertan automáticamente al iniciar
 - El esquema incluye índices para optimizar consultas frecuentes
 - Las relaciones están configuradas con fetch lazy para optimizar el rendimiento
+
