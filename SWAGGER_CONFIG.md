@@ -58,17 +58,17 @@ springdoc.swagger-ui.response-snippets-enabled=true
 
 ### Swagger UI
 ```
-http://localhost:8080/swagger-ui.html
+http://localhost:8082/swagger-ui.html
 ```
 
 ### OpenAPI JSON
 ```
-http://localhost:8080/api-docs
+http://localhost:8082/api-docs
 ```
 
 ### OpenAPI YAML
 ```
-http://localhost:8080/api-docs.yaml
+http://localhost:8082/api-docs.yaml
 ```
 
 ## Características de la Documentación
@@ -81,7 +81,7 @@ http://localhost:8080/api-docs.yaml
 - **Licencia**: MIT License
 
 ### 2. Servidores Configurados
-- **Desarrollo**: `http://localhost:8080`
+- **Desarrollo**: `http://localhost:8082`
 - **Producción**: `https://api.creangel.com`
 
 ### 3. Endpoints Documentados
