@@ -34,7 +34,7 @@ public class AlumnoService {
     
     // READ - Obtener alumno por ID
     @Transactional(readOnly = true)
-    public Optional<Alumno> obtenerAlumnoPorId(Integer id) {
+    public Optional<Alumno> obtenerAlumnoPorId(String id) {
         return alumnoRepository.findById(id);
     }
     
@@ -45,7 +45,7 @@ public class AlumnoService {
     }
     
     // UPDATE - Actualizar alumno existente
-    public Alumno actualizarAlumno(Integer id, Alumno alumnoActualizado) {
+    public Alumno actualizarAlumno(String id, Alumno alumnoActualizado) {
         Optional<Alumno> alumnoExistente = alumnoRepository.findById(id);
         
         if (alumnoExistente.isPresent()) {
@@ -55,12 +55,6 @@ public class AlumnoService {
             if (!alumno.getEmail().equals(alumnoActualizado.getEmail()) && 
                 alumnoRepository.existsByEmail(alumnoActualizado.getEmail())) {
                 throw new RuntimeException("Ya existe otro alumno con el email: " + alumnoActualizado.getEmail());
-            }
-            
-            // Validar fecha de nacimiento
-            if (alumnoActualizado.getFechaNacimiento() != null && 
-                alumnoActualizado.getFechaNacimiento().isAfter(LocalDate.now())) {
-                throw new RuntimeException("La fecha de nacimiento no puede ser futura");
             }
             
             // Actualizar campos
@@ -76,7 +70,7 @@ public class AlumnoService {
     }
     
     // DELETE - Eliminar alumno por ID
-    public void eliminarAlumno(Integer id) {
+    public void eliminarAlumno(String id) {
         if (!alumnoRepository.existsById(id)) {
             throw new RuntimeException("No se encontró el alumno con ID: " + id);
         }
