@@ -1,0 +1,13 @@
+/opt/java_test/repo/src/main/java/com/creangel/pruebaTecnica/PruebaTecnicaApplication.java
+/opt/java_test/repo/src/main/java/com/creangel/pruebaTecnica/config/OpenApiConfig.java
+/opt/java_test/repo/src/main/java/com/creangel/pruebaTecnica/controller/AlumnoController.java
+/opt/java_test/repo/src/main/java/com/creangel/pruebaTecnica/controller/MateriaController.java
+/opt/java_test/repo/src/main/java/com/creangel/pruebaTecnica/dto/AlumnoDTO.java
+/opt/java_test/repo/src/main/java/com/creangel/pruebaTecnica/dto/MateriaDTO.java
+/opt/java_test/repo/src/main/java/com/creangel/pruebaTecnica/model/Alumno.java
+/opt/java_test/repo/src/main/java/com/creangel/pruebaTecnica/model/Materia.java
+/opt/java_test/repo/src/main/java/com/creangel/pruebaTecnica/model/Nota.java
+/opt/java_test/repo/src/main/java/com/creangel/pruebaTecnica/repository/AlumnoRepository.java
+/opt/java_test/repo/src/main/java/com/creangel/pruebaTecnica/repository/MateriaRepository.java
+/opt/java_test/repo/src/main/java/com/creangel/pruebaTecnica/service/AlumnoService.java
+/opt/java_test/repo/src/main/java/com/creangel/pruebaTecnica/service/MateriaService.java
