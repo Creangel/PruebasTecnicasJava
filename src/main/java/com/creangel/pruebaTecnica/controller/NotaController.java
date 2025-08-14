@@ -7,7 +7,9 @@ import com.creangel.pruebaTecnica.dto.AlumnoDTO;
 import com.creangel.pruebaTecnica.dto.NotaDTO;
 import com.creangel.pruebaTecnica.model.Alumno;
 import com.creangel.pruebaTecnica.model.Nota;
+import com.creangel.pruebaTecnica.service.NotaService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/api/notas")
 public class NotaController {
+
+    @Autowired
+    NotaService notaService;
     
     @PostMapping
     public String postMethodName(@RequestBody NotaDTO notaDTO) {
