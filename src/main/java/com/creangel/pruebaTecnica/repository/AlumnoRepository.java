@@ -11,10 +11,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface AlumnoRepository extends JpaRepository<Alumno, Integer> { 
+public interface AlumnoRepository extends JpaRepository<Alumno, Integer> {
     
+    // Buscar por ID
+    Optional<Alumno> findById(Integer id);
+
     // Buscar por email
-    Optional<Alumno> findByEmail(String email);
+    Optional<Alumno> findByEmail(String email);    
     
     // Buscar por nombre y apellido
     List<Alumno> findByNombreAndApellido(String nombre, String apellido);
@@ -41,6 +44,12 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Integer> {
     // Verificar si existe por email
     boolean existsByEmail(String email);
     
+    // Verificar si existe por id
+    boolean existsById(Integer id);
+
+    // Eliminar por Id
+    void deleteById(Integer id);
+
     // Buscar alumnos ordenados por apellido y nombre
     List<Alumno> findAllByOrderByApellidoAscNombreAsc();
 }
