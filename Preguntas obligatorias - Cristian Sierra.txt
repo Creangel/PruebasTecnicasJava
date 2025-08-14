@@ -1,0 +1,23 @@
+Preguntas obligatorias:
+1. Explica qué es una arquitectura de capas en una aplicación Spring Boot y 
+responsabilidades de cada capa.
+ Respuesta: La arquitectura de capas en una aplicación de Spring Boot permite tener un orden en la misma: 
+  - Mantenibilidad esta permite que cuando se edite una capa solo cambie de estado la que se esta editando y las demás no tengan cambios.
+  - Escalabilidad: Ayuda a que podamos cambiar una capa y mejorarla sin tener que cambiar todo lo que ya se tenia. 
+  - Separación de responsabilidades: cada capa tiene sus funcionalidades dentro de la aplicación. 
+2. Si un cliente pide agregar paginación al listado de alumnos, ¿cómo lo implementarías?
+ Respuesta: Primero tendría ver como paginarlo en este caso lo haría con números ascendentes, entonces crearía una función por la cual me ordene de manera ascendente, pero antes de ello, crearía otra función que me ordene alfabéticamente los nombre teniendo en cuenta los apellidos, esto para que exista un mayor orden en el listado 
+3. ¿Cuál es la diferencia entre @Entity y @Table en JPA?
+ Respuesta: @Entity sirve para identificar una clase pudiendo editar muchas características según las que contenga pero por otro lado @Table solo nos permite cambiar o asignarle las características a una tabla, sabiendo que en una @Entity puede contener mas cosas que la @Table.
+4. ¿Cómo manejarías el control de errores si un usuario solicita un registro de la 
+entidad notas que no existe?
+ Respuesta: Colocaría un alerta para que cuando se este digitando le indique a la persona que no existe dicha entidad y no se pierda la información. 
+5. Si tuvieras que permitir que una materia tenga múltiples calificaciones y cada alumno
+pueda tener múltiples materias, ¿cómo modelarías esa relación en JPA?
+ Respuesta: Colocaría una entidad por materia pudiendo agregar en cada una de estas una nota según se necesite 
+
+Preguntas Opcionales: 
+3. ¿Qué es la escalabilidad vertical vs horizontal?
+ Respuesta: la escalabilidad vertical se emplea en agregar mas nodos y así utilizar una mayor carga  mientras que la horizontal se necesita de mucha mas ram para su uso 
+4. ¿Qué es un balanceador de carga y para qué sirve?
+ Respuesta: un Balanceador de carga sirve para que en nivele la cantidad de trafico de carga que se requiere.
