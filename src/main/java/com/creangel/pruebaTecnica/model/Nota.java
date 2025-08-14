@@ -3,6 +3,7 @@ package com.creangel.pruebaTecnica.model;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Entity
 @Table(name = "Nota")
@@ -87,4 +88,5 @@ public class Nota {
                 ", materia=" + (materia != null ? materia.getId() : "null") +
                 '}';
     }
+
 }
