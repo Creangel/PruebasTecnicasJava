@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-public class NotaRepository {
+@Repository
+public interface NotaRepository extends JpaRepository<Nota, Integer>{
+
+
+} {
     
-}
