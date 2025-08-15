@@ -13,7 +13,7 @@ public class Nota {
     private Integer id;
     
     @Column(name = "valor", precision = 3, scale = 1)
-    private BigDecimal valor;
+    private Float valor;
     
     @Column(name = "fecha_registro")
     private LocalDate fechaRegistro;

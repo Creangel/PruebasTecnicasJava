@@ -1,35 +1,51 @@
 package com.creangel.pruebaTecnica.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.time.LocalDate;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+import java.sql.Date;
+
+import com.creangel.pruebaTecnica.model.Alumno;
+import com.creangel.pruebaTecnica.model.Materia;
+
 
 @Schema(description = "DTO para transferencia de datos de Alumno")
-public class AlumnoDTO {
+public class NotaDTO {
     
-    @Schema(description = "Identificador único del alumno", example = "1")
+    @Schema(description = "Identificador único del nota", example = "1")
     private Integer id;
     
-    @Schema(description = "Nombre del alumno", example = "Juan", required = true)
-    private String nombre;
+
+    @Schema(description = "Valor de la nota", example = "5.0", required = true)
+    private Float valor;
     
-    @Schema(description = "Apellido del alumno", example = "Pérez", required = true)
-    private String apellido;
     
-    @Schema(description = "Dirección de email del alumno", example = "juan.perez@email.com", required = true)
-    private String email;
-    
-    @Schema(description = "Fecha de nacimiento del alumno", example = "2000-05-15", required = true)
-    private LocalDate fechaNacimiento;
-    
+    @Schema(description = "Fecha registro", required = true)
+    private Date fechaRegistro;
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "alumno_id")
+    private Alumno alumno;
+
+
+    @ManyToOne
+    @JoinColumn(name = "materia_id")
+    private Materia materia;
+
     // Constructors
-    public AlumnoDTO() {}
+    public NotaDTO() {}
     
-    public AlumnoDTO(Integer id, String nombre, String apellido, String email, LocalDate fechaNacimiento) {
+
+
+    public NotaDTO(Integer id, Float valor, Date fechaRegistro, Alumno alumno, Materia materia) {
         this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.fechaNacimiento = fechaNacimiento;
+        this.valor = valor;
+        this.fechaRegistro = fechaRegistro;
+        this.alumno = alumno;
+        this.materia = materia;
     }
     
     // Getters and Setters
@@ -41,46 +57,47 @@ public class AlumnoDTO {
         this.id = id;
     }
     
-    public String getNombre() {
-        return nombre;
+    public Float getValor() {
+        return valor;
     }
     
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setValor(Float valor) {
+        this.valor = valor;
     }
     
-    public String getApellido() {
-        return apellido;
+    public Date getFechaRegistro() {
+        return fechaRegistro;
     }
     
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
     
-    public String getEmail() {
-        return email;
+    public Alumno getAlumnoDTO() {
+        return alumno;
     }
     
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAlumnoDTO(Alumno alumnoDTO) {
+        this.alumno = alumnoDTO;
     }
     
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
+    public Materia getMateriaDTO() {
+        return materia;
     }
     
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setMateriaDTO(Materia materiaDTO) {
+        this.materia = materiaDTO;
     }
+ 
     
     @Override
     public String toString() {
         return "AlumnoDTO{" +
                 "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", email='" + email + '\'' +
-                ", fechaNacimiento=" + fechaNacimiento +
+                ", valor='" + valor + '\'' +
+                ", fechaRegistro='" + fechaRegistro + '\'' +
+                ", alumno='" + alumno.getNombre() + '\'' +
+                ", materia=" + materia.getNombre() +
                 '}';
     }
 }
