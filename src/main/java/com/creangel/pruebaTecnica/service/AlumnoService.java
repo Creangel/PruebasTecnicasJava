@@ -35,7 +35,7 @@ public class AlumnoService {
     // READ - Obtener alumno por ID
     @Transactional(readOnly = true)
     public Optional<Alumno> obtenerAlumnoPorId(String id) {
-        return alumnoRepository.findById(id);
+        return alumnoRepository.findById(Integer.valueOf(id));
     }
     
     // READ - Obtener todos los alumnos
@@ -46,7 +46,7 @@ public class AlumnoService {
     
     // UPDATE - Actualizar alumno existente
     public Alumno actualizarAlumno(String id, Alumno alumnoActualizado) {
-        Optional<Alumno> alumnoExistente = alumnoRepository.findById(id);
+        Optional<Alumno> alumnoExistente = alumnoRepository.findById(Integer.valueOf(id));
         
         if (alumnoExistente.isPresent()) {
             Alumno alumno = alumnoExistente.get();
@@ -71,9 +71,9 @@ public class AlumnoService {
     
     // DELETE - Eliminar alumno por ID
     public void eliminarAlumno(String id) {
-        if (!alumnoRepository.existsById(id)) {
+        if (!alumnoRepository.existsById(Integer.valueOf(id))) {
             throw new RuntimeException("No se encontró el alumno con ID: " + id);
         }
-        alumnoRepository.deleteById(id);
+        alumnoRepository.deleteById(Integer.valueOf(id));
     }
 }
