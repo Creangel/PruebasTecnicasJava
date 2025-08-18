@@ -1,13 +1,7 @@
 package com.creangel.pruebaTecnica.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.OneToMany;
-
 import java.time.LocalDate;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Schema(description = "DTO para transferencia de datos de Alumno")
 public class AlumnoDTO {
@@ -26,8 +20,7 @@ public class AlumnoDTO {
     
     @Schema(description = "Fecha de nacimiento del alumno", example = "2000-05-15", required = true)
     private LocalDate fechaNacimiento;
-   
-
+    
     // Constructors
     public AlumnoDTO() {}
     

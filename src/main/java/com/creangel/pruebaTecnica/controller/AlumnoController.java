@@ -53,7 +53,7 @@ public class AlumnoController {
         @ApiResponse(responseCode = "404", description = "Alumno no encontrado")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<AlumnoDTO> obtenerAlumnoPorId(@Parameter(description = "ID del alumno") @PathVariable Integer id) { 
+    public ResponseEntity<AlumnoDTO> obtenerAlumnoPorId(@Parameter(description = "ID del alumno") @PathVariable String id) { 
         Optional<Alumno> alumno = alumnoService.obtenerAlumnoPorId(id);
         if (alumno.isPresent()) {
             AlumnoDTO respuesta = convertirModeloaDTO(alumno.get());
@@ -77,7 +77,7 @@ public class AlumnoController {
     
     // UPDATE - Actualizar alumno existente
     @PutMapping("/{id}")
-    public ResponseEntity<AlumnoDTO> actualizarAlumno(@PathVariable Integer id, @RequestBody AlumnoDTO alumnoDTO) { 
+    public ResponseEntity<AlumnoDTO> actualizarAlumno(@PathVariable String id, @RequestBody AlumnoDTO alumnoDTO) { 
         try {
             Alumno alumno = convertirDTOaModelo(alumnoDTO);
             Alumno alumnoActualizado = alumnoService.actualizarAlumno(id, alumno);
@@ -90,7 +90,7 @@ public class AlumnoController {
     
     // DELETE - Eliminar alumno por ID
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarAlumno(@PathVariable Integer id) {
+    public ResponseEntity<Void> eliminarAlumno(@PathVariable String id) {
         try {
             alumnoService.eliminarAlumno(id);
             return ResponseEntity.noContent().build();
