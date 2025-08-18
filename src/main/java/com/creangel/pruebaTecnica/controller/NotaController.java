@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import com.creangel.pruebaTecnica.dto.NotaDTO;
 import com.creangel.pruebaTecnica.model.Nota;
 import com.creangel.pruebaTecnica.service.NotaService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -20,12 +18,24 @@ public class NotaController {
     private NotaService notaService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<NotaDTO>> getNota(@RequestParam String id) {
-        Optional<NotaDTO> nota = notaService.obtenerNotaPorId(id);
+    public ResponseEntity<NotaDTO> getNota(@PathVariable String id) {
+        Optional<Nota> nota = notaService.obtenerNotaPorId(id);
         if (nota.isPresent()) {
-            return ResponseEntity.ok(nota);
+            NotaDTO respuesta = convertirModeloaDTO(nota.get());
+            return ResponseEntity.ok(respuesta);
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
     
 
+    private NotaDTO convertirModeloaDTO(Nota nota) {
+        return new NotaDTO(
+            nota.getId(),
+            nota.getValor().doubleValue(),
+            nota.getFechaRegistro().toString(),
+            nota.getAlumno().getId(),
+            nota.getMateria().getId()
+        );
+    }
 }

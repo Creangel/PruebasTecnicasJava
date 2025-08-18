@@ -3,13 +3,13 @@ package com.creangel.pruebaTecnica.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.creangel.pruebaTecnica.dto.NotaDTO;
+import com.creangel.pruebaTecnica.model.Nota;
+
 import java.util.Optional;
 
 @Repository
-public interface NotaRepository extends JpaRepository<NotaDTO, Integer> {
+public interface NotaRepository extends JpaRepository<Nota, Integer> {
 
-    @Override
-    Optional<NotaDTO> findById(Integer id);
+    Optional<Nota> findById(Integer id);
 
 }

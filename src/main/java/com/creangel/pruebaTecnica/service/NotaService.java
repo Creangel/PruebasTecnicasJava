@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.creangel.pruebaTecnica.dto.NotaDTO;
+import com.creangel.pruebaTecnica.model.Nota;
 import com.creangel.pruebaTecnica.repository.NotaRepository;
 
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class NotaService {
     @Autowired
     private NotaRepository notaRepository;
 
-    public Optional<NotaDTO> obtenerNotaPorId(String id){
+    public Optional<Nota> obtenerNotaPorId(String id){
         return notaRepository.findById(Integer.valueOf(id));
     }
     

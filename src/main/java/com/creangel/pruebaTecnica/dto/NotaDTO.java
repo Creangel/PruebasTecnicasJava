@@ -7,8 +7,10 @@ public class NotaDTO {
     private String fecha_registro;
     private Integer id_alumno;
     private Integer id_materia;
+
     public NotaDTO() {
     }
+    
     public NotaDTO(Integer id, Double valor, String fecha_registro, Integer id_alumno, Integer id_materia) {
         this.id = id;
         this.valor = valor;
