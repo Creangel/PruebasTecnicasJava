@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 
 import com.creangel.pruebaTecnica.model.Alumno;
@@ -18,7 +19,7 @@ public class NotaDTO {
     
 
     @Schema(description = "Valor de la nota", example = "5.0", required = true)
-    private Float valor;
+    private BigDecimal valor;
     
     
     @Schema(description = "Fecha registro", required = true)
@@ -40,7 +41,7 @@ public class NotaDTO {
     
 
 
-    public NotaDTO(Integer id, Float valor, Date fechaRegistro, Alumno alumno, Materia materia) {
+    public NotaDTO(Integer id, BigDecimal valor, Date fechaRegistro, Alumno alumno, Materia materia) {
         this.id = id;
         this.valor = valor;
         this.fechaRegistro = fechaRegistro;
@@ -57,11 +58,11 @@ public class NotaDTO {
         this.id = id;
     }
     
-    public Float getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
     
-    public void setValor(Float valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
     

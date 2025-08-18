@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface NotaRepository extends JpaRepository<Nota, Integer> { 
     
-    Nota Notasave(Nota nota); 
+   // Nota Notasave(Nota nota); 
 
     Optional<Nota> findById(Integer id);
 

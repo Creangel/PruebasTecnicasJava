@@ -2,6 +2,7 @@ package com.creangel.pruebaTecnica.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
@@ -13,10 +14,10 @@ public class Nota {
     private Integer id;
     
     @Column(name = "valor", precision = 3, scale = 1)
-    private Float valor;
+    private BigDecimal valor;
     
     @Column(name = "fecha_registro")
-    private LocalDate fechaRegistro;
+    private Date fechaRegistro;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_alumno", nullable = false)
@@ -29,7 +30,7 @@ public class Nota {
     // Constructors
     public Nota() {}
     
-    public Nota(BigDecimal valor, LocalDate fechaRegistro, Alumno alumno, Materia materia) {
+    public Nota(BigDecimal valor, Date fechaRegistro, Alumno alumno, Materia materia) {
         this.valor = valor;
         this.fechaRegistro = fechaRegistro;
         this.alumno = alumno;
@@ -53,11 +54,11 @@ public class Nota {
         this.valor = valor;
     }
     
-    public LocalDate getFechaRegistro() {
+    public Date getFechaRegistro() {
         return fechaRegistro;
     }
     
-    public void setFechaRegistro(LocalDate fechaRegistro) {
+    public void setFechaRegistro(Date fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
     
